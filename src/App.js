@@ -4,6 +4,8 @@ import * as shipAPI from './services/sw-api';
 
 import Header from './components/Header/';
 
+import './App.css';
+
 const App = () => {
   const [starships, setStarships] = useState([]);
 
@@ -20,17 +22,20 @@ const App = () => {
 
 
   return (
-    <div>
+    <div className='App'>
       <Header />
       <Switch>
         <Route exact path='/'>
-          {starships.map((ship, idx) =>
-            <div
-            key={idx}
-            >
-              {ship.name}
-            </div>
-          )}
+          <section>
+            {starships.map((ship, idx) =>
+              <Link 
+              to={`/starships/${idx}`}
+              key={idx}
+              >
+                {ship.name}
+              </Link>
+            )}
+          </section>
         </Route>
       </Switch>
     </div>

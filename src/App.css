@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.App section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.App section a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkslategray;
+  color: lightgray;
+  font-size: 20px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+}
