@@ -3,6 +3,7 @@ import { Route, Switch, Link } from 'react-router-dom';
 import * as shipAPI from './services/sw-api';
 
 import Header from './components/Header/';
+import StarshipPage from './pages/StarshipPage';
 
 import './App.css';
 
@@ -20,23 +21,39 @@ const App = () => {
     fetchShips();
   }, [])
 
+  const getStarship = (idx) => {
+    return starships[idx];
+  }
+
 
   return (
     <div className='App'>
       <Header />
       <Switch>
         <Route exact path='/'>
-          <section>
-            {starships.map((ship, idx) =>
-              <Link 
-              to={`/starships/${idx}`}
-              key={idx}
-              >
-                {ship.name}
-              </Link>
-            )}
-          </section>
+          { starships 
+          ?
+            <section>
+              {starships.map((ship, idx) =>
+                <Link 
+                to={`/starships/${idx}`}
+                key={idx}
+                >
+                  {ship.name}
+                </Link>
+              )}
+            </section>
+          :
+          <h3> Loading ... </h3>
+          }
         </Route>
+
+        <Route path='/starships/:idx' render={() =>
+          <StarshipPage
+            starships={starships}
+            getStarship={getStarship}
+          />
+        }/>
       </Switch>
     </div>
   );
