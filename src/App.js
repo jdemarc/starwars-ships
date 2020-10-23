@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Switch, Link } from 'react-router-dom';
 import * as shipAPI from './services/sw-api';
 
-import Header from './components/Header/'
+import Header from './components/Header/';
 
 const App = () => {
   const [starships, setStarships] = useState([]);
@@ -11,7 +12,7 @@ const App = () => {
     const fetchShips = async () => {
       const fetchedData = await shipAPI.getAllStarships();
 
-      setStarships(fetchedData);
+      setStarships(fetchedData.results);
     }
 
     fetchShips();
@@ -21,6 +22,17 @@ const App = () => {
   return (
     <div>
       <Header />
+      <Switch>
+        <Route exact path='/'>
+          {starships.map((ship, idx) =>
+            <div
+            key={idx}
+            >
+              {ship.name}
+            </div>
+          )}
+        </Route>
+      </Switch>
     </div>
   );
 }
