@@ -1,20 +1,31 @@
 .ship-container {
   display: flex;
   width: 100%;
-  align-items: center;
   justify-content: center;
 }
 
 .starship {
   display: flex;
+  flex-direction: column;
   width: 40%;
   background-color: darkslategray;
-  justify-content: center;
   padding: 20px;
   margin: 10px;
   border-radius: 5px;
+  text-align: left;
+  font-size: 20px;
 }
 
 .starship a {
   color: lightgray;
+  text-align: center;
+  align-self: center;
+  text-decoration: none;
+  background-color: #1f6f8b;
+  margin-top: 15px;
+  width: 40%;
+}
+
+.starship span {
+  padding: 5px;
 }

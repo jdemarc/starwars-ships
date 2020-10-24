@@ -22,9 +22,8 @@ const App = () => {
   }, [])
 
   const getStarship = (idx) => {
-    return starships[idx];
+    return starships[idx]
   }
-
 
   return (
     <div className='App'>
@@ -48,12 +47,11 @@ const App = () => {
           }
         </Route>
 
-        <Route path='/starships/:idx' render={() =>
+        <Route path='/starships/:idx'>
           <StarshipPage
-            starships={starships}
             getStarship={getStarship}
           />
-        }/>
+        </Route>
       </Switch>
     </div>
   );

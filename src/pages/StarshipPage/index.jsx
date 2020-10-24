@@ -3,18 +3,27 @@ import { Link, useParams } from 'react-router-dom';
 
 import './Starship.css';
 
-const StarshipPage = ( { starships, getStarship } ) => {
+const StarshipPage = ( { getStarship } ) => {
   let { idx } = useParams();
 
-  const [starship, setStarship] = useState({})
+  const [starship, setStarship] = useState(null);
 
-  // TO DO
+  useEffect(() => {
+    const ship = getStarship(idx);
+    setStarship(ship);
+  }, [getStarship, idx])
 
   return (
     <div className='ship-container'>
+      { starship ? 
       <div className='starship'>
-        {starship.name}
+        <span>NAME: { starship.name }</span>
+        <span>MODEL: { starship.model }</span>
+        <Link to='/'>RETURN</Link>
       </div>
+      :
+      <h3> Loading ... </h3> 
+    }
     </div>
   )
 }
